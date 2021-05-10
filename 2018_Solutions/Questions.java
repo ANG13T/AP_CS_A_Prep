@@ -27,4 +27,26 @@
  }
 
  // Question 2: A
- 
+ public WordPairList(String[] words){
+   // initialze arraylist
+   allPairs = new ArrayList<WordPair>();
+  // goes through all words except last word because last element can never be in a pair
+   for(int i = 0; i < words.length - 1; i++){
+     // loops through all other words after the current word
+     for(int j = i + 1; j < words.length; j++){
+       // adds to all pairs
+       allPairs.add(new WordPair(words[i], words[j]));
+     }
+   }
+ }
+
+  // Question 2: B
+  public int numMatches(){
+    int result = 0;
+    for(WordPair word: allPairs){
+      if(word.getFirst().equals(word.getSecond())){
+        result++;
+      }
+    }
+    return result;
+  }
