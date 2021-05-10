@@ -50,3 +50,35 @@
     }
     return result;
   }
+
+  // Question 3
+  public class CodeWordChecker implements StringChecker{
+    private String pass;
+    private int startNum;
+    private int endNum;
+
+    public CodeWordChecker(int start, int end, String password){
+      pass = password;
+      startNum = startl;
+      endNum = end;
+    }
+
+    public CodeWordChecker(String password){
+      pass = password;
+      startNum = 6;
+      endNum = 20;
+    }
+
+    public boolean isValid(String str){
+      if(str.includes(pass) == -1){
+        return false;
+      }
+
+      if(str.length() < startNum || str.length() > endNum){
+        return false;
+      }
+
+      return true;
+    }
+
+  }
