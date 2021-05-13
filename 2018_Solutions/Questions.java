@@ -94,21 +94,26 @@ public static int[] getColumn(int[][] arr2D, int c){
 
 // Question 4: B
 public static boolean isLatin(int[][] square){
+  //checks if first row contains duplicates (first condition)
   if(containsDuplicates(square[0])){
       return false;
   }
 
+  // checks all rows (other than first unecessary)
   for(int r = 1; r < square.length; r++){
+    // checks if it does not contain all values in first row for each other row (second condition)
     if(!hasAllValues(square[0], square[r])){
       return false;
     }
   }
 
+  // checks all columns of sqaure
   for(int c = 0; c < square[0].length; c++){
+    // checks if all values in column contain values in first row (third condition)
     if(!hasAllValues(square[0], getColumn(square, c))){
       return false;
     }
   }
-  
+
   return true;
 }
