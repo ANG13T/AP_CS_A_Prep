@@ -40,3 +40,22 @@ public class MultPractice implements StudyPractice{
     addValue++;
   }
 }
+
+// Question 3: A
+public void replaceNthOccurence(String str, int n, String repl){
+  int location = findNthOccurence(str, n);
+
+  if(location != -1){
+    currentPhrase = currentPhrase.substring(0, location) + repl + currentPhrase.substring(location + str.length());
+  }
+}
+
+// Question 3: B
+public int findLastOccurence(String str){
+  int num = 1;
+  while(findNthOccurence(str, num + 1) != -1){
+    num++;
+  }
+  return findNthOccurence(str, num);
+}
+
