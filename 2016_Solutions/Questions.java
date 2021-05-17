@@ -49,4 +49,29 @@ public boolean containsWord(String keyword){
   return false;
 }
 
+// Question 3: A
+private boolean toBeLabled(int r, int c, boolean[][] blackSquares){
+  return ((!blackSquares[r][c]) && (r == 0 || c == 0 || blackSquares[r - 1][c] || blackSquares[r][c - 1]));
+}
 
+
+// Question 3:B
+public Crossword(boolean[][] blackSquares){
+  int count = 1;
+  puzzle = new Square[blackSquares.length][blackSquares[0].length];
+
+  for(int i = 0; i < blackSquares.length; i++){
+    for(int j = 0; j < blackSquares[0].length; j++){
+      // conditions for black squares
+      if(blackSquares[i][j]){
+        puzzle[i][j] = new Square(true, 0);
+      }else{
+        if(toBeLabled(i, j, blackSquares)){
+          puzzle[i][j] = new Square(false, 0);
+        }else{
+          puzzle[i][j] = new Square(true, 0);
+        }
+      }
+    }
+  }
+}
