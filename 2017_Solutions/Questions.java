@@ -59,3 +59,27 @@ public int findLastOccurence(String str){
   return findNthOccurence(str, num);
 }
 
+// Question 4: A
+public static Position findPosition(int num, int[][] numArr){
+  
+  for(int i = 0; i < numArr.length; i++){
+    for(int j = 0; j < numArr[0].length; j++){
+      if(numArr[i][j] == num){
+        return new Position(i,j);
+      }
+    }
+  }
+  return null;
+}
+
+// Question 4: B
+public static Position[][] getSuccessorArray(int[][] intArr){
+  Position[][] board = new Position[intArr.length][intArr[0].length];
+  for(int i = 0; i < intArr.length; i++){
+    for(int j = 0; j < intArr[0].length; j++){
+      Position next = findPosition(intArr[i][j] + 1, intArr);
+      board[i][j] = next;
+    }
+  }
+  return board;
+}
