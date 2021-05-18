@@ -67,11 +67,44 @@ public Crossword(boolean[][] blackSquares){
         puzzle[i][j] = new Square(true, 0);
       }else{
         if(toBeLabled(i, j, blackSquares)){
-          puzzle[i][j] = new Square(false, 0);
+          puzzle[i][j] = new Square(false, count);
         }else{
-          puzzle[i][j] = new Square(true, 0);
+          puzzle[i][j] = new Square(false, 0);
         }
       }
     }
   }
+}
+
+// Question 4: A
+public static int totalLetters(List<String> wordList){
+  int totalLetters = 0;
+  for(String word: wordList){
+    totalLetters += word.length();
+  }
+  return totalLetters;
+}
+
+// Question 4: B
+public static int basicGapWidth(List<String> wordList, int formattedLen){
+  return (formattedLen - totalLetters(wordList) / (wordList.size() - 1));
+}
+
+// Question 4: C
+public static String format(List<String> wordList, int formattedLen){
+  String result = "";
+  int gapCount = basicGapWidth(wordList, formattedLen);
+  int leftoverCount = leftoverSpaces(wordList, formattedLen);
+  for(String word: wordList){
+    result += word;
+    for(int i = 0; i < gapCount - 1; i++){
+      result += " ";
+    }
+    if(leftoverCount > 0){
+      result += " ";
+      leftoverCount--;
+    }
+  }
+  result += wordList.get(wordList.size() - 1);
+  return result;
 }
